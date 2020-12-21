@@ -21,4 +21,24 @@ And use /s (Stop) to exit'
     end
     command(gets.chomp.strip) if @movie.results == true
   end
+
+  def command(selected)
+    case selected
+    when '/n'
+      puts
+      search_movies
+    when /[0-9]/
+      Launchy.open(@movie.hash[selected.to_s])
+      @movie.stop = !@movie.stop
+      sleep 2
+    when '/s'
+      @movie.stop = !@movie.stop
+    when '/b'
+      @movie.count -= 20
+      search_movies
+    else
+      puts "\ncommand #{selected} does not exist, insert a real command please"
+      command(gets.chomp.strip)
+    end
+  end
 end
