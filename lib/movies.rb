@@ -15,4 +15,20 @@ class Movie
     @url = @doc.css('div.ml-item a.ml-mask')
     @hash = {}
   end
+
+  def movies
+    @hash = {}
+    if (@name.length - @count).positive? && (@quality.length - @count).positive?
+      @name.length.times do
+        puts "#{@count + 1}. Movie: #{@name[@count].text}"
+        puts "   Quality: #{@quality[@count].text.strip}\n\n"
+        @hash[(@count + 1).to_s] = "https://123moviesfree.net#{@url[@count]['href'].chomp.strip}"
+        @count += 1
+        break if (@count % 10).zero?
+      end
+    else
+      @results = false
+      puts 'No results found.'
+    end
+  end
 end
