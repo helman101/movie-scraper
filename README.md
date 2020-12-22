@@ -35,6 +35,12 @@ After copy the repo you should follow this steps:
 
 - run `ruby bin/main.rb` command
 
+### Commands
+
+- `/n`: Next movies page
+- `/b`: Back to the last movies page
+- `/s`: Stop the scraper
+- Use a number to select the movie you want to see
 ## Author
 
 👤 **Andres**
